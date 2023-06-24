@@ -11,12 +11,12 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class CardOrderTest {
     @Test
-    void OrdetCard () throws InterruptedException {
+    void ordetCard() {
         open("http://localhost:9999/");
         $("[data-test-id=name] input").setValue("Никита");
         $("[data-test-id=phone] input").setValue("+12345678901");
         $("[data-test-id=agreement]").click();
         $(".button").click();
-        $(".paragraph").shouldHave(exactText("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время."));
+        $("[data-test-id=order-success]").shouldHave(exactText("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время."));
     }
 }
